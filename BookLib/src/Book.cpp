@@ -1,6 +1,10 @@
 #include "Book.h"
 
 
+Book::Book (const std::string& theTitle) :
+    myTitle (theTitle)
+{};
+
 Book::Book (const std::string& theTitle, const std::string& theAuthor, int thePublishedYead, float thePrice) :
     myPublishedYear (thePublishedYead), myPrice (thePrice), myTitle (theTitle), myAuthor (theAuthor)
 {}
@@ -26,4 +30,24 @@ const Book& Book::operator= (Book&& theBook) noexcept
 bool Book::operator == (const Book& theBook) const
 {
     return myTitle == theBook.myTitle;
+}
+
+size_t BookHash::operator() (const Book& theBook) const
+{
+    return std::hash<std::string>() (theBook.Title());
+}
+
+bool BookTitleLess::operator() (const Book& theLhs, const Book& theRhs) const
+{
+    return theLhs.Title() < theRhs.Title();
+}
+
+bool BookAuthorLess::operator() (const Book& theLhs, const Book& theRhs) const
+{
+    return theLhs.Author() < theRhs.Author();
+}
+
+bool BookYearLess::operator() (const Book& theLhs, const Book& theRhs) const
+{
+    return theLhs.PublishedYear() < theRhs.PublishedYear();
 }

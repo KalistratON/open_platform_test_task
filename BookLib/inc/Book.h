@@ -8,6 +8,9 @@
 
 class Book final {
 public:
+    Book() = default;
+    explicit Book (const std::string& theTitle);
+
     _EXPORT Book (const std::string& theTitle, const std::string& theAuthor, int thePublishedYead, float thePrice);
 
     _EXPORT Book (const Book& theBook) = default;
@@ -17,7 +20,7 @@ public:
     _EXPORT const Book& operator= (const Book& theBook);
     _EXPORT const Book& operator= (Book&& theBook) noexcept;
 
-    bool operator == (const Book& theBook) const;
+    _EXPORT bool operator == (const Book& theBook) const;
 
     _DEFINE_PROPERTY (int, PublishedYear)
     _DEFINE_PROPERTY (float, Price)

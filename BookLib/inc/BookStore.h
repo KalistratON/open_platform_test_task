@@ -4,13 +4,12 @@
 #include "Book.h"
 #include "SortType.h"
 
-#include <list>
 #include <string>
 #include <unordered_set>
+#include <vector>
 
 
 class BookStore final {
-
 public:
     using BookUSet = std::unordered_set<Book, BookHash>;
 
@@ -18,8 +17,8 @@ public:
 
     _EXPORT void AddBook (const Book& theBook);
     _EXPORT void RemoveBook (const std::string& theBookTitle);
-    _EXPORT Book* FindBook (const std::string& theBookTitle);
-    _EXPORT std::list<Book> ListBook (SortType theSortType);
+    _EXPORT const Book* FindBook (const std::string& theBookTitle);
+    _EXPORT std::vector<Book> ListBook (SortType theSortType);
     _EXPORT BookUSet FindBookInPriceRange (float theMinPrice, float theMaxPrice);
 
 private:
