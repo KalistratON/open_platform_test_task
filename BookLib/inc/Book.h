@@ -9,9 +9,9 @@
 class Book final {
 public:
     Book() = default;
-    explicit Book (const std::string& theTitle);
+    explicit Book (const std::wstring& theTitle);
 
-    _EXPORT Book (const std::string& theTitle, const std::string& theAuthor, int thePublishedYead, float thePrice);
+    _EXPORT Book (const std::wstring& theTitle, const std::wstring& theAuthor, int thePublishedYead, float thePrice);
 
     _EXPORT Book (const Book& theBook) = default;
     _EXPORT Book (Book&& theBook) = default;
@@ -24,8 +24,8 @@ public:
 
     _DEFINE_PROPERTY (int, PublishedYear)
     _DEFINE_PROPERTY (float, Price)
-    _DEFINE_PROPERTY (std::string, Title)
-    _DEFINE_PROPERTY (std::string, Author)
+    _DEFINE_PROPERTY (std::wstring, Title)
+    _DEFINE_PROPERTY (std::wstring, Author)
 };
 
 class BookHash final {

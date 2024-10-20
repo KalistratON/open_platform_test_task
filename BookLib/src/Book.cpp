@@ -1,11 +1,11 @@
 #include "Book.h"
 
 
-Book::Book (const std::string& theTitle) :
+Book::Book (const std::wstring& theTitle) :
     myTitle (theTitle)
 {};
 
-Book::Book (const std::string& theTitle, const std::string& theAuthor, int thePublishedYead, float thePrice) :
+Book::Book (const std::wstring& theTitle, const std::wstring& theAuthor, int thePublishedYead, float thePrice) :
     myPublishedYear (thePublishedYead), myPrice (thePrice), myTitle (theTitle), myAuthor (theAuthor)
 {}
 
@@ -34,7 +34,7 @@ bool Book::operator == (const Book& theBook) const
 
 size_t BookHash::operator() (const Book& theBook) const
 {
-    return std::hash<std::string>() (theBook.Title());
+    return std::hash<std::wstring>() (theBook.Title());
 }
 
 bool BookTitleLess::operator() (const Book& theLhs, const Book& theRhs) const
