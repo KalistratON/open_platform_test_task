@@ -69,9 +69,11 @@ static bool PrintMenu (int& theCommand, BookStore& theBooksStore)
             std::wcout << "¬ведите цену: ";
             std::wcin >> aPrice;
 
-            theBooksStore.AddBook (Book (aTitle, anAuthor, anYear, aPrice));
-
-            std::wcout << std::endl << " нига успешно добавлена!" << std::endl << std::endl;
+            if (theBooksStore.AddBook (Book (aTitle, anAuthor, anYear, aPrice))) {
+                std::wcout << std::endl << " нига успешно добавлена!" << std::endl << std::endl;
+            } else {
+                std::wcout << std::endl << " нига уже существует!" << std::endl << std::endl;
+            }
         }
         break;
     case CommanType::REMOVE:

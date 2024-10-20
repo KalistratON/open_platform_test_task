@@ -15,7 +15,7 @@ public:
 
     _EXPORT BookStore () = default;
 
-    _EXPORT void AddBook (const Book& theBook);
+    _EXPORT bool AddBook (const Book& theBook);
     _EXPORT bool RemoveBook (const std::wstring& theBookTitle);
     _EXPORT const Book* FindBook (const std::wstring& theBookTitle);
     _EXPORT std::vector<Book> ListBook (SortType theSortType);

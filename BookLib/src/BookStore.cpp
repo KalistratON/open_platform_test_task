@@ -3,9 +3,9 @@
 #include <algorithm>
 
 
-void BookStore::AddBook (const Book& theBook)
+bool BookStore::AddBook (const Book& theBook)
 {
-    myBookMap.emplace (theBook).second;
+    return myBookMap.emplace (theBook).second;
 }
 
 bool BookStore::RemoveBook (const std::wstring& theBookTitle)
