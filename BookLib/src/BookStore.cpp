@@ -8,14 +8,15 @@ void BookStore::AddBook (const Book& theBook)
     myBookMap.emplace (theBook).second;
 }
 
-void BookStore::RemoveBook (const std::wstring& theBookTitle)
+bool BookStore::RemoveBook (const std::wstring& theBookTitle)
 {
     auto anIt = myBookMap.find (Book (theBookTitle));
     if (anIt == myBookMap.end()) {
-        return;
+        return false;
     }
 
     myBookMap.erase (anIt);
+    return true;
 }
 
 const Book* BookStore::FindBook (const std::wstring& theBookTitle)

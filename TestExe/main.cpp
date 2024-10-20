@@ -80,9 +80,11 @@ static bool PrintMenu (int& theCommand, BookStore& theBooksStore)
             std::wcout << "¬ведите название книги: ";
             std::getline (std::wcin, aTitle);
 
-            theBooksStore.RemoveBook (aTitle);
-
-            std::wcout << std::endl << " нига успешно удалена!" << std::endl << std::endl;
+            if (theBooksStore.RemoveBook (aTitle)) {
+                std::wcout << std::endl << " нига успешно удалена!" << std::endl << std::endl;
+            } else {
+                std::wcout << " нига не найдена!" << std::endl;
+            }
         }
         break;
     case CommanType::FIND:
@@ -92,7 +94,11 @@ static bool PrintMenu (int& theCommand, BookStore& theBooksStore)
             std::getline (std::wcin, aTitle);
 
             const Book* aBook = theBooksStore.FindBook (aTitle);
-            PrintBook (*aBook);
+            if (aBook) {
+                PrintBook (*aBook);
+            } else {
+                std::wcout << " нига не найдена!" << std::endl << std::endl;
+            }
 
             std::wcout << std::endl;
         }
