@@ -81,10 +81,11 @@ static bool PrintMenu (int& theCommand, BookStore& theBooksStore)
             std::getline (std::wcin, aTitle);
 
             if (theBooksStore.RemoveBook (aTitle)) {
-                std::wcout << std::endl << " нига успешно удалена!" << std::endl << std::endl;
+                std::wcout << std::endl << " нига успешно удалена!";
             } else {
-                std::wcout << " нига не найдена!" << std::endl;
+                std::wcout << " нига не найдена!";
             }
+            std::wcout << std::endl << std::endl;
         }
         break;
     case CommanType::FIND:
@@ -97,10 +98,10 @@ static bool PrintMenu (int& theCommand, BookStore& theBooksStore)
             if (aBook) {
                 PrintBook (*aBook);
             } else {
-                std::wcout << " нига не найдена!" << std::endl << std::endl;
+                std::wcout << " нига не найдена!";
             }
 
-            std::wcout << std::endl;
+            std::wcout << std::endl << std::endl;
         }
         break;
     case CommanType::PRINT_SORTED:
@@ -126,7 +127,7 @@ static bool PrintMenu (int& theCommand, BookStore& theBooksStore)
             if (!aSortedBooks.size()) {
                 std::wcout << "-------------------------------------------" << std::endl;
             }
-            std::wcout << std::endl;
+            std::wcout << std::endl << std::endl;
         }
         break;
     case CommanType::FIND_IN_PRICE_RANGE:
@@ -146,6 +147,7 @@ static bool PrintMenu (int& theCommand, BookStore& theBooksStore)
 
             auto aDedicatedBooks = theBooksStore.FindBookInPriceRange (aMinPrice, aMaxPrice);
             std::for_each (aDedicatedBooks.begin(), aDedicatedBooks.end(), PrintBook);
+            std::wcout << std::endl << std::endl;
         }
         break;
     case CommanType::EXIT:
